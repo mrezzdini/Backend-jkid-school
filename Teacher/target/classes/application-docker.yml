@@ -1,0 +1,27 @@
+eureka:
+  instance:
+    hostname: teacher-service
+  client:
+    service-url:
+      defaultZone: http://service-discovery:8761/eureka
+
+server:
+  port: 8092
+spring:
+  application:
+       name: teachers
+  config:
+    activate:
+      on-profile: docker
+    import: optional:configserver:http://config-server:8888
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://postgres:5432/teachers
+    hikari:
+      username: school
+      password: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect

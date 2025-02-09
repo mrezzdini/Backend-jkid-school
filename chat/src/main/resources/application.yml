@@ -1,0 +1,25 @@
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+spring:
+  data:
+    mongodb:
+      # to use local mongo db database check in docker-compose.yml file containers (mongodb and mongo-express) and delete the bellow uri field
+      # host: localhost
+      # port: 27017
+      uri: "mongodb+srv://jkid:jkid@cluster0.msp1pqd.mongodb.net/"
+      database: chat
+      username: jkid
+      password: jkid
+      authentication-database: admin
+
+server:
+  port: 8090
+
+
+socket-server:
+  port: 8089
+  host: localhost

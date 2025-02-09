@@ -1,0 +1,263 @@
+---
+services:
+
+  config-server:
+    build: ../config-server
+    container_name: config-server
+    restart: always
+    image: config-server
+    healthcheck:
+      test: ["CMD", "curl", "-I", "http://config-server:8888"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    ports:
+      - 8888:8888
+    networks:
+      - net-svc
+
+  service-discovery:
+    build: ../discovery
+    container_name: service-discovery
+    restart: always
+    image: discoveryschool
+    healthcheck:
+      test: ["CMD", "curl", "-I", "http://service-discovery:8761"]
+      interval: 8s
+      timeout: 5s
+      retries: 10
+    depends_on:
+      config-server:
+        condition: service_healthy
+    ports:
+      - 8761:8761
+    networks:
+      - net-svc
+
+  gateway-service:
+    build: ../gateway
+    container_name: gateway-service
+    restart: always
+    image: gatewayschool-service
+    healthcheck:
+      test: ["CMD", "curl", "-I", "http://gateway-service:8080"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    depends_on:
+      config-server:
+        condition: service_healthy
+      service-discovery:
+        condition: service_healthy
+    ports:
+      - 8080:8080
+    networks:
+      - net-svc
+
+  postgres:
+    container_name: postgres
+    restart: always
+    image: postgres
+    environment:
+      POSTGRES_MULTIPLE_DATABASES: subject,book,attendance,events,parents,students,teachers,payment
+      POSTGRES_USER: school
+      POSTGRES_PASSWORD: root
+    ports:
+      - "5433:5432"
+    command: postgres -c 'max_connections=1000'
+    volumes:
+      - ./:/docker-entrypoint-initdb.d
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - net-svc
+
+  mongodb:
+    container_name: mongodb
+    image: mongo:latest
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: school
+      MONGO_INITDB_ROOT_PASSWORD: school
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - net-svc
+
+  parent-service:
+    build: ../parent
+    container_name: parents-service
+    restart: always
+    image: parent-service
+    depends_on:
+      config-server:
+        condition: service_healthy
+      service-discovery:
+        condition: service_healthy
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/parents
+    networks:
+      - net-svc
+
+  student-service:
+    build: ../student
+    container_name: student-service
+    restart: always
+    image: student-service
+    depends_on:
+      config-server:
+        condition: service_healthy
+      service-discovery:
+        condition: service_healthy
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/students
+    networks:
+      - net-svc
+
+  chat-service:
+    build: ../chat
+    container_name: chatschool-service
+    restart: always
+    image: chatschool-service
+    ports:
+      - "8090:8090"
+      - "8091:8091"
+    depends_on:
+      config-server:
+        condition: service_healthy
+      service-discovery:
+        condition: service_healthy
+    environment:
+      MONGO_DB_URL: mongodb://jkid:root@mongodb:27017/chatdb
+    networks:
+      - net-svc
+
+  storage-service:
+    build: ../storage
+    container_name: storage-service
+    restart: always
+    image: storageschool-service
+    depends_on:
+       config-server:
+         condition: service_healthy
+       service-discovery:
+         condition: service_healthy
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/storage
+    networks:
+      - net-svc
+
+  teacher-service:
+    build: ../Teacher
+    restart: always
+    container_name: teachers-service
+    image: teachers-service
+    depends_on:
+      config-server:
+        condition: service_healthy
+      service-discovery:
+        condition: service_healthy
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/teachers
+    networks:
+      - net-svc
+
+  events-service:
+    build: ../events
+    restart: always
+    container_name: events-Service
+    image: events-service
+    depends_on:
+      config-server:
+        condition: service_healthy
+      service-discovery:
+        condition: service_healthy
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/events
+    networks:
+      - net-svc
+
+  attendance-service:
+    build: ../attendance
+    restart: always
+    container_name: attendance-Service
+    image: attendance-service
+    depends_on:
+      config-server:
+        condition: service_healthy
+      service-discovery:
+        condition: service_healthy
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/attendance
+    networks:
+      - net-svc
+
+  bookClass-service:
+    build: ../book-class
+    restart: always
+    container_name: bookClass-service
+    image: bookschool-service
+    depends_on:
+      config-server:
+        condition: service_healthy
+      service-discovery:
+        condition: service_healthy
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/book
+    networks:
+      - net-svc
+
+  subject-service:
+    build: ../subject
+    restart: always
+    container_name: subject-service
+    image: subject-service
+    depends_on:
+      config-server:
+        condition: service_healthy
+      service-discovery:
+        condition: service_healthy
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/subject
+    networks:
+      - net-svc
+
+  payment-service:
+    build: ../payment
+    container_name: payment-service
+    restart: always
+    image: payment-service
+    depends_on:
+      config-server:
+        condition: service_healthy
+      service-discovery:
+        condition: service_healthy
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/payment
+    networks:
+      - net-svc
+
+  frontend:
+    container_name: frontend
+    build:
+      context: ../../Frontend-j-school
+      dockerfile: Dockerfile
+    image: frontend-j-school-docker
+    restart: always
+    depends_on:
+      - gateway-service
+    ports:
+      - 80:80
+    volumes:
+      - ./src:/app/data
+    networks:
+      - net-svc
+
+networks:
+  net-svc:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  mongo_data:

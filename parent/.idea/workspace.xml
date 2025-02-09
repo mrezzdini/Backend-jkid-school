@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2bdc5d47-824e-439b-bb1d-983f8c7bfb2c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/technoparent/FullParentResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/technoparent/parent/FullParentResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/technoparent/Parent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/technoparent/parent/Parent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/technoparent/ParentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/technoparent/parent/ParentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/technoparent/ParentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/technoparent/parent/ParentRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/technoparent/ParentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/technoparent/parent/ParentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/technoparent/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/technoparent/parent/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/technoparent/client/StudentClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/technoparent/parent/client/StudentClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2XnGBVQvPn7UrXTCRMzIF09EOxV" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "last_directory_selection": "C:/Users/DELL/Desktop/aymen/Garderie Back-end/ApiGateway/parent/src/main/java/com/technoparent/parent",
+    "last_opened_file_path": "C:/Users/DELL/Desktop/aymen/Garderie Back-end/ApiGateway",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
+  }
+}]]></component>
+  <component name="RunManager" selected="Spring Boot.ParentApplication (1)">
+    <configuration name="ParentApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="parent" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.technoparent.ParentApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.technoparent.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ParentApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="parent" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.technoparent.parent.ParentApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.ParentApplication (1)" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2bdc5d47-824e-439b-bb1d-983f8c7bfb2c" name="Changes" comment="" />
+      <created>1699257294993</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1699257294993</updated>
+      <workItem from="1699257296005" duration="3567000" />
+      <workItem from="1699448756806" duration="427000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

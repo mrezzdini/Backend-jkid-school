@@ -1,0 +1,25 @@
+server:
+  port: 5001
+spring:
+  application:
+      name: storage
+  config:
+      import: optional:configserver:http://localhost:8888
+  datasource:
+      driver-class-name: org.postgresql.Driver
+      url: jdbc:postgresql://localhost:5432/storage
+      username: postgres
+      password: root
+  jpa:
+      hibernate:
+        ddl-auto: update
+      database: postgresql
+      database-platform: org.hibernate.dialect.PostgreSQLDialect
+  servlet:
+    multipart:
+      max-file-size: 1000MB
+      max-request-size: 1000MB
+file:
+  upload-dir: ./storage/uploads
+
+

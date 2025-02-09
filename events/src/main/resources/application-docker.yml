@@ -1,0 +1,33 @@
+schooleureka:
+  instance:
+    hostname: events-service
+  client:
+    service-url:
+      defaultZone: http://service-discovery:8761/eureka
+
+server:
+  port: 8095
+spring:
+  application:
+    name: events
+  config:
+    activate:
+      on-profile: docker
+    import: optional:configserver:http://config-server:8888
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://postgres:5432/events
+    username: school
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: create
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+
+
+
+
+

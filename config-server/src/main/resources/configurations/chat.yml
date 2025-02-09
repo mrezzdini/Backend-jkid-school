@@ -1,0 +1,18 @@
+spring:
+  data:
+    mongodb:
+      # to use local mongo db database check in docker-compose.yml file containers (mongodb and mongo-express) and delete the bellow uri field
+      # host: localhost
+      # port: 27017
+      uri: "mongodb+srv://jkid:jkid@cluster0.msp1pqd.mongodb.net/"
+      database: chat
+      username: school
+      password: school
+      authentication-database: admin
+
+server:
+  port: 8099
+
+socket-server:
+  port: 8091
+  host: localhost

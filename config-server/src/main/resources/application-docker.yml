@@ -1,0 +1,13 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/mrezzdini/Data-For-School.git
+          username: mrezzdini
+          password: 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

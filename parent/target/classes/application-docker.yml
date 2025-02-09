@@ -1,0 +1,25 @@
+
+server:
+  port: 8093
+spring:
+  application:
+      name: parents
+  config:
+    activate:
+      on-profile: docker
+    import: optional:configserver:http://config-server:8888
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://postgres:5432/parents
+    username: jkid
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+application:
+  config:
+    students-url: http://student-service:8091/api/v1/students
+
